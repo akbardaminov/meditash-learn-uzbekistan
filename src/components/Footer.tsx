@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="bg-card border-t border-border/50 py-12">
+  return <footer className="bg-card border-t border-border/50 py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
@@ -60,17 +58,13 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-muted-foreground text-center md:text-left">
-            © 2024 MediTash. All rights reserved.
-          </p>
+          <p className="text-muted-foreground text-center md:text-left">© 2025 MediTash. All rights reserved.</p>
           <div className="flex items-center gap-2 mt-4 md:mt-0 text-muted-foreground">
             <Heart className="w-4 h-4 text-accent" />
             <span>Empowering medical education through AI and medical students</span>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

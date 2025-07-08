@@ -39,7 +39,7 @@ const FeaturesSection = () => {
         
         <div className="space-y-20">
           {features.map((feature, index) => (
-            <Card key={index} className="overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300">
+            <Card key={index} className="overflow-hidden shadow-medium hover:shadow-glow transition-spring hover:scale-[1.02] bg-card/80 backdrop-blur-md border border-border/30">
               <CardContent className="p-0">
                 <div className={`flex flex-col ${feature.imagePosition === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center`}>
                   <div className="md:w-1/2">

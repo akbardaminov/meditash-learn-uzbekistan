@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-card/80 backdrop-blur-sm border-b border-border/50 sticky top-0 z-50">
+    <header className="bg-card/80 backdrop-blur-md border-b border-border/30 sticky top-0 z-50 shadow-soft">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl font-bold text-primary">
           MediTash
@@ -24,23 +25,26 @@ const Header = () => {
           <Link to="/rare-illnesses" className="text-foreground hover:text-primary transition-colors">
             Rare Illnesses
           </Link>
+          <ModeToggle />
           <Button variant="hero" size="sm">
             Sign Up
           </Button>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ModeToggle />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-card border-t border-border/50">
+        <div className="md:hidden bg-card/90 backdrop-blur-md border-t border-border/30 shadow-soft">
           <nav className="flex flex-col p-4 gap-4">
             <Link 
               to="/" 

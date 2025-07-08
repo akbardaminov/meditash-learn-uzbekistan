@@ -11,7 +11,7 @@ const HeroSection = () => {
           alt="Medical Hero Background" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary-glow/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary-glow/80 dark:from-primary/70 dark:to-primary-glow/60"></div>
       </div>
       
       {/* Content */}
@@ -31,18 +31,21 @@ const HeroSection = () => {
         <Button 
           variant="accent" 
           size="xl" 
-          className="text-lg px-8 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
+          className="text-lg px-8 py-4 shadow-glow hover:shadow-large transition-spring hover:scale-105 hover:-translate-y-1"
         >
           Start Learning Today
         </Button>
       </div>
       
       {/* Floating Medical Icons */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm animate-pulse">
-        <div className="w-8 h-8 bg-accent rounded-full"></div>
+      <div className="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md animate-pulse shadow-glow">
+        <div className="w-8 h-8 bg-accent rounded-full shadow-medium"></div>
       </div>
-      <div className="absolute bottom-32 right-16 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm animate-pulse delay-300">
-        <div className="w-10 h-10 bg-accent rounded-full"></div>
+      <div className="absolute bottom-32 right-16 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md animate-pulse delay-300 shadow-glow">
+        <div className="w-10 h-10 bg-accent rounded-full shadow-medium"></div>
+      </div>
+      <div className="absolute top-1/2 right-10 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-md animate-pulse delay-500">
+        <div className="w-6 h-6 bg-primary rounded-full"></div>
       </div>
     </section>
   );

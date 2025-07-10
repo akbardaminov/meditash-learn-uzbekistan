@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AddDiseaseSection from "@/components/AddDiseaseSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -130,6 +131,13 @@ const RareIllnesses = () => {
               className="pl-10 py-3 text-lg"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Add Disease Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <AddDiseaseSection type="rare" />
         </div>
       </section>
 

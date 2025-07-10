@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
+import logoImage from "@/assets/meditash-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,8 @@ const Header = () => {
   return (
     <header className="bg-card/80 backdrop-blur-md border-b border-border/30 sticky top-0 z-50 shadow-soft">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-primary">
+        <Link to="/" className="flex items-center gap-3 text-2xl font-bold text-primary hover:opacity-80 transition-opacity">
+          <img src={logoImage} alt="MediTash Logo" className="w-8 h-8" />
           MediTash
         </Link>
         

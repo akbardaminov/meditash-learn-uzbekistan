@@ -4,15 +4,20 @@ import AddDiseaseSection from "@/components/AddDiseaseSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, Clock, Users, BookOpen } from "lucide-react";
+import { Search, Clock, Users, BookOpen, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDiseasesStorage, Disease } from "@/hooks/useDiseasesStorage";
 
 const CommonDiseases = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const { getDiseasesOfType } = useDiseasesStorage();
 
-  const diseases = [
+  const defaultDiseases: Disease[] = [
     {
+      id: "default-1",
       name: "Hypertension",
       category: "Cardiovascular",
       prevalence: "High",
@@ -20,9 +25,12 @@ const CommonDiseases = () => {
       students: 1240,
       difficulty: "Intermediate",
       description: "Essential hypertension and its management in primary care settings.",
-      tags: ["Cardiovascular", "Chronic", "Primary Care"]
+      tags: ["Cardiovascular", "Chronic", "Primary Care"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "default-2",
       name: "Diabetes Mellitus Type 2",
       category: "Endocrine",
       prevalence: "High",
@@ -30,9 +38,12 @@ const CommonDiseases = () => {
       students: 980,
       difficulty: "Advanced",
       description: "Comprehensive approach to T2DM diagnosis, management, and complications.",
-      tags: ["Endocrine", "Chronic", "Metabolism"]
+      tags: ["Endocrine", "Chronic", "Metabolism"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "default-3",
       name: "Pneumonia",
       category: "Respiratory",
       prevalence: "High",
@@ -40,9 +51,12 @@ const CommonDiseases = () => {
       students: 1100,
       difficulty: "Intermediate",
       description: "Community-acquired pneumonia diagnosis and treatment protocols.",
-      tags: ["Respiratory", "Acute", "Infectious"]
+      tags: ["Respiratory", "Acute", "Infectious"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "default-4",
       name: "Gastroenteritis",
       category: "Gastrointestinal",
       prevalence: "Very High",
@@ -50,9 +64,12 @@ const CommonDiseases = () => {
       students: 850,
       difficulty: "Beginner",
       description: "Acute gastroenteritis management and prevention strategies.",
-      tags: ["GI", "Acute", "Infectious"]
+      tags: ["GI", "Acute", "Infectious"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "default-5",
       name: "Urinary Tract Infection",
       category: "Genitourinary",
       prevalence: "High",
@@ -60,9 +77,12 @@ const CommonDiseases = () => {
       students: 720,
       difficulty: "Beginner",
       description: "UTI diagnosis, treatment, and recurrence prevention.",
-      tags: ["Genitourinary", "Infectious", "Primary Care"]
+      tags: ["Genitourinary", "Infectious", "Primary Care"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "default-6",
       name: "Asthma",
       category: "Respiratory",
       prevalence: "High",
@@ -70,15 +90,35 @@ const CommonDiseases = () => {
       students: 900,
       difficulty: "Intermediate",
       description: "Asthma management, triggers, and emergency protocols.",
-      tags: ["Respiratory", "Chronic", "Allergic"]
+      tags: ["Respiratory", "Chronic", "Allergic"],
+      type: "common",
+      createdAt: "2024-01-01T00:00:00.000Z"
     }
   ];
 
-  const filteredDiseases = diseases.filter(disease =>
+  const [allDiseases, setAllDiseases] = useState<Disease[]>(defaultDiseases);
+
+  useEffect(() => {
+    const userDiseases = getDiseasesOfType('common');
+    setAllDiseases([...defaultDiseases, ...userDiseases]);
+  }, [refreshTrigger]);
+
+  const filteredDiseases = allDiseases.filter(disease =>
     disease.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     disease.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
     disease.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const visibleDiseases = filteredDiseases.slice(0, visibleCount);
+  const hasMoreDiseases = filteredDiseases.length > visibleCount;
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 4);
+  };
+
+  const handleDiseaseAdded = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -119,7 +159,7 @@ const CommonDiseases = () => {
       {/* Add Disease Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <AddDiseaseSection type="common" />
+          <AddDiseaseSection type="common" onDiseaseAdded={handleDiseaseAdded} />
         </div>
       </section>
 
@@ -127,8 +167,8 @@ const CommonDiseases = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredDiseases.map((disease, index) => (
-              <Card key={index} className="hover:shadow-medium transition-all duration-300 cursor-pointer group">
+            {visibleDiseases.map((disease, index) => (
+              <Card key={disease.id} className="hover:shadow-medium transition-all duration-300 cursor-pointer group">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className="text-xs">
@@ -174,6 +214,20 @@ const CommonDiseases = () => {
               </Card>
             ))}
           </div>
+          
+          {hasMoreDiseases && (
+            <div className="text-center mt-8">
+              <Button 
+                onClick={handleLoadMore}
+                variant="outline" 
+                size="lg"
+                className="min-w-40"
+              >
+                <ChevronDown className="w-4 h-4 mr-2" />
+                Show More ({filteredDiseases.length - visibleCount} remaining)
+              </Button>
+            </div>
+          )}
           
           {filteredDiseases.length === 0 && (
             <div className="text-center py-12">

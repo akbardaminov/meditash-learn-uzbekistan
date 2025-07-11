@@ -4,15 +4,20 @@ import AddDiseaseSection from "@/components/AddDiseaseSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Search, Clock, Users, BookOpen, AlertTriangle } from "lucide-react";
+import { Search, Clock, Users, BookOpen, AlertTriangle, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDiseasesStorage, Disease } from "@/hooks/useDiseasesStorage";
 
 const RareIllnesses = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const { getDiseasesOfType } = useDiseasesStorage();
 
-  const rareIllnesses = [
+  const defaultRareIllnesses: Disease[] = [
     {
+      id: "rare-default-1",
       name: "Huntington's Disease",
       category: "Neurological",
       prevalence: "1 in 10,000",
@@ -21,9 +26,12 @@ const RareIllnesses = () => {
       difficulty: "Advanced",
       description: "Progressive neurodegenerative disorder affecting movement, cognition, and behavior.",
       tags: ["Neurological", "Genetic", "Degenerative"],
-      rarity: "Rare"
+      rarity: "Rare",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "rare-default-2",
       name: "Amyotrophic Lateral Sclerosis (ALS)",
       category: "Neurological",
       prevalence: "1 in 50,000",
@@ -32,9 +40,12 @@ const RareIllnesses = () => {
       difficulty: "Advanced",
       description: "Progressive motor neuron disease affecting voluntary muscle control.",
       tags: ["Neurological", "Motor", "Progressive"],
-      rarity: "Very Rare"
+      rarity: "Very Rare",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "rare-default-3",
       name: "Fabry Disease",
       category: "Genetic",
       prevalence: "1 in 40,000",
@@ -43,9 +54,12 @@ const RareIllnesses = () => {
       difficulty: "Advanced",
       description: "X-linked lysosomal storage disorder affecting multiple organ systems.",
       tags: ["Genetic", "Lysosomal", "Multi-system"],
-      rarity: "Rare"
+      rarity: "Rare",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "rare-default-4",
       name: "Moyamoya Disease",
       category: "Vascular",
       prevalence: "1 in 100,000",
@@ -54,9 +68,12 @@ const RareIllnesses = () => {
       difficulty: "Advanced",
       description: "Progressive cerebrovascular disorder causing stenosis of internal carotid arteries.",
       tags: ["Vascular", "Cerebral", "Progressive"],
-      rarity: "Very Rare"
+      rarity: "Very Rare",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "rare-default-5",
       name: "Gaucher Disease",
       category: "Genetic",
       prevalence: "1 in 60,000",
@@ -65,9 +82,12 @@ const RareIllnesses = () => {
       difficulty: "Advanced",
       description: "Lysosomal storage disorder affecting the liver, spleen, and bone marrow.",
       tags: ["Genetic", "Lysosomal", "Metabolic"],
-      rarity: "Rare"
+      rarity: "Rare",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     },
     {
+      id: "rare-default-6",
       name: "Marfan Syndrome",
       category: "Genetic",
       prevalence: "1 in 3,000",
@@ -76,15 +96,35 @@ const RareIllnesses = () => {
       difficulty: "Intermediate",
       description: "Connective tissue disorder affecting cardiovascular, skeletal, and ocular systems.",
       tags: ["Genetic", "Connective Tissue", "Multi-system"],
-      rarity: "Uncommon"
+      rarity: "Uncommon",
+      type: "rare",
+      createdAt: "2024-01-01T00:00:00.000Z"
     }
   ];
 
-  const filteredIllnesses = rareIllnesses.filter(illness =>
+  const [allIllnesses, setAllIllnesses] = useState<Disease[]>(defaultRareIllnesses);
+
+  useEffect(() => {
+    const userIllnesses = getDiseasesOfType('rare');
+    setAllIllnesses([...defaultRareIllnesses, ...userIllnesses]);
+  }, [refreshTrigger]);
+
+  const filteredIllnesses = allIllnesses.filter(illness =>
     illness.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     illness.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
     illness.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const visibleIllnesses = filteredIllnesses.slice(0, visibleCount);
+  const hasMoreIllnesses = filteredIllnesses.length > visibleCount;
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 4);
+  };
+
+  const handleDiseaseAdded = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -137,7 +177,7 @@ const RareIllnesses = () => {
       {/* Add Disease Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <AddDiseaseSection type="rare" />
+          <AddDiseaseSection type="rare" onDiseaseAdded={handleDiseaseAdded} />
         </div>
       </section>
 
@@ -157,8 +197,8 @@ const RareIllnesses = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredIllnesses.map((illness, index) => (
-              <Card key={index} className="hover:shadow-medium transition-all duration-300 cursor-pointer group">
+            {visibleIllnesses.map((illness, index) => (
+              <Card key={illness.id} className="hover:shadow-medium transition-all duration-300 cursor-pointer group">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className="text-xs">
@@ -212,6 +252,20 @@ const RareIllnesses = () => {
               </Card>
             ))}
           </div>
+          
+          {hasMoreIllnesses && (
+            <div className="text-center mt-8">
+              <Button 
+                onClick={handleLoadMore}
+                variant="outline" 
+                size="lg"
+                className="min-w-40"
+              >
+                <ChevronDown className="w-4 h-4 mr-2" />
+                Show More ({filteredIllnesses.length - visibleCount} remaining)
+              </Button>
+            </div>
+          )}
           
           {filteredIllnesses.length === 0 && (
             <div className="text-center py-12">

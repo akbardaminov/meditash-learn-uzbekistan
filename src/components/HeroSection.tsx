@@ -34,7 +34,7 @@ const HeroSection = () => {
             <Button 
               variant="outline" 
               size="xl" 
-              className="text-lg px-8 py-4 border-2 hover:bg-muted/50"
+              className="text-lg px-8 py-4 border-2 hover:bg-primary/10 hover:border-primary hover:text-primary"
             >
               See Examples
             </Button>

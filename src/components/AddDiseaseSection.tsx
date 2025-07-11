@@ -7,13 +7,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Plus, X, Save } from "lucide-react";
+import { useDiseasesStorage } from "@/hooks/useDiseasesStorage";
+import { useToast } from "@/hooks/use-toast";
 
 interface AddDiseaseSectionProps {
   type: "common" | "rare";
+  onDiseaseAdded?: () => void;
 }
 
-const AddDiseaseSection = ({ type }: AddDiseaseSectionProps) => {
+const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { addDisease } = useDiseasesStorage();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -60,21 +65,56 @@ const AddDiseaseSection = ({ type }: AddDiseaseSectionProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically save to a database
-    console.log("Saving disease:", formData);
     
-    // Reset form
-    setFormData({
-      name: "",
-      category: "",
-      difficulty: "",
-      description: "",
-      prevalence: "",
-      studyTime: "",
-      tags: [],
-      newTag: ""
-    });
-    setIsOpen(false);
+    if (!formData.name || !formData.category || !formData.difficulty) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields (Name, Category, Difficulty).",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const newDisease = addDisease({
+        name: formData.name,
+        category: formData.category,
+        difficulty: formData.difficulty,
+        description: formData.description,
+        prevalence: formData.prevalence || (type === "common" ? "High" : "Very Rare"),
+        studyTime: formData.studyTime || "2 weeks",
+        tags: formData.tags,
+        type,
+        rarity: type === "rare" ? formData.prevalence || "Very Rare" : undefined,
+      });
+
+      toast({
+        title: "Disease Added Successfully!",
+        description: `${newDisease.name} has been added to the ${type} diseases list.`,
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        category: "",
+        difficulty: "",
+        description: "",
+        prevalence: "",
+        studyTime: "",
+        tags: [],
+        newTag: ""
+      });
+      setIsOpen(false);
+      
+      // Notify parent component
+      onDiseaseAdded?.();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to add disease. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

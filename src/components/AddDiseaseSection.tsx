@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,6 +20,7 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
   const [isOpen, setIsOpen] = useState(false);
   const { addDisease } = useDiseasesStorage();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -31,20 +33,24 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
   });
 
   const categories = [
-    "Respiratory",
-    "Cardiovascular",
-    "Neurological",
-    "Gastrointestinal",
-    "Endocrine",
-    "Musculoskeletal",
-    "Dermatological",
-    "Hematological",
-    "Oncological",
-    "Infectious",
-    "Other"
+    { key: "respiratory", label: t('categories.respiratory') },
+    { key: "cardiovascular", label: t('categories.cardiovascular') },
+    { key: "neurological", label: t('categories.neurological') },
+    { key: "gastrointestinal", label: t('categories.gastrointestinal') },
+    { key: "endocrine", label: t('categories.endocrine') },
+    { key: "musculoskeletal", label: t('categories.musculoskeletal') },
+    { key: "dermatological", label: t('categories.dermatological') },
+    { key: "hematological", label: t('categories.hematological') },
+    { key: "oncological", label: t('categories.oncological') },
+    { key: "infectious", label: t('categories.infectious') },
+    { key: "other", label: t('categories.other') },
   ];
 
-  const difficulties = ["Beginner", "Intermediate", "Advanced"];
+  const difficulties = [
+    { key: "beginner", label: t('difficulty.beginner') },
+    { key: "intermediate", label: t('difficulty.intermediate') },
+    { key: "advanced", label: t('difficulty.advanced') },
+  ];
 
   const handleAddTag = () => {
     if (formData.newTag.trim() && !formData.tags.includes(formData.newTag.trim())) {
@@ -68,8 +74,8 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
     
     if (!formData.name || !formData.category || !formData.difficulty) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields (Name, Category, Difficulty).",
+        title: t('addDisease.error'),
+        description: t('addDisease.required'),
         variant: "destructive",
       });
       return;
@@ -89,8 +95,11 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
       });
 
       toast({
-        title: "Disease Added Successfully!",
-        description: `${newDisease.name} has been added to the ${type} diseases list.`,
+        title: t('addDisease.success'),
+        description: t('addDisease.successDescription', { 
+          name: newDisease.name, 
+          type: type === 'common' ? t('nav.commonDiseases').toLowerCase() : t('nav.rareIllnesses').toLowerCase()
+        }),
       });
 
       // Reset form
@@ -110,8 +119,8 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
       onDiseaseAdded?.();
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to add disease. Please try again.",
+        title: t('addDisease.error'),
+        description: t('addDisease.errorDescription'),
         variant: "destructive",
       });
     }
@@ -127,7 +136,7 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
           className="shadow-glow hover:shadow-large transition-spring"
         >
           <Plus className="mr-2 h-5 w-5" />
-          Add New {type === "common" ? "Common Disease" : "Rare Illness"}
+          {t('addDisease.title', { type: type === 'common' ? t('nav.commonDiseases') : t('nav.rareIllnesses') })}
         </Button>
       </div>
 
@@ -136,34 +145,34 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
           <CardHeader className="bg-gradient-hero text-primary-foreground rounded-t-lg">
             <CardTitle className="text-2xl font-bold text-center flex items-center justify-center gap-2">
               <Plus className="h-6 w-6" />
-              Add New {type === "common" ? "Common Disease" : "Rare Illness"}
+              {t('addDisease.title', { type: type === 'common' ? t('nav.commonDiseases') : t('nav.rareIllnesses') })}
             </CardTitle>
           </CardHeader>
           <CardContent className="p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-medium">Disease Name *</Label>
+                  <Label htmlFor="name" className="text-sm font-medium">{t('addDisease.name')} *</Label>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Enter disease name"
+                    placeholder={t('addDisease.namePlaceholder')}
                     required
                     className="focus:ring-primary focus:border-primary"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="category" className="text-sm font-medium">Category *</Label>
+                  <Label htmlFor="category" className="text-sm font-medium">{t('addDisease.category')} *</Label>
                   <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
                     <SelectTrigger className="focus:ring-primary focus:border-primary">
-                      <SelectValue placeholder="Select category" />
+                      <SelectValue placeholder={t('addDisease.categoryPlaceholder')} />
                     </SelectTrigger>
                     <SelectContent>
                       {categories.map((category) => (
-                        <SelectItem key={category} value={category.toLowerCase()}>
-                          {category}
+                        <SelectItem key={category.key} value={category.key}>
+                          {category.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -171,15 +180,15 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="difficulty" className="text-sm font-medium">Difficulty Level *</Label>
+                  <Label htmlFor="difficulty" className="text-sm font-medium">{t('addDisease.difficulty')} *</Label>
                   <Select value={formData.difficulty} onValueChange={(value) => setFormData({ ...formData, difficulty: value })}>
                     <SelectTrigger className="focus:ring-primary focus:border-primary">
-                      <SelectValue placeholder="Select difficulty" />
+                      <SelectValue placeholder={t('addDisease.difficultyPlaceholder')} />
                     </SelectTrigger>
                     <SelectContent>
                       {difficulties.map((difficulty) => (
-                        <SelectItem key={difficulty} value={difficulty.toLowerCase()}>
-                          {difficulty}
+                        <SelectItem key={difficulty.key} value={difficulty.key}>
+                          {difficulty.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -260,7 +269,7 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
                   className="flex-1 shadow-glow hover:shadow-large transition-spring"
                 >
                   <Save className="mr-2 h-5 w-5" />
-                  Save Disease
+                  {t('addDisease.save')}
                 </Button>
                 <Button
                   type="button"
@@ -268,7 +277,7 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
                   onClick={() => setIsOpen(false)}
                   className="flex-1"
                 >
-                  Cancel
+                  {t('addDisease.cancel')}
                 </Button>
               </div>
             </form>

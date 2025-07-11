@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "Home",
+    "commonDiseases": "Common Diseases",
+    "rareIllnesses": "Rare Illnesses",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "hero": {
+    "title": "Learn Medicine with AI",
+    "subtitle": "An intelligent learning platform built specifically for medical students. Study common and rare diseases, practice with real cases, and test your knowledge with our AI assistant.",
+    "getStarted": "Get Started",
+    "seeExamples": "See Examples"
+  },
+  "features": {
+    "title": "How It Works",
+    "subtitle": "Three key features that make medical education easier",
+    "flashcards": {
+      "title": "Smart Flashcards",
+      "description": "Accelerate learning with AI-generated interactive flashcards"
+    },
+    "learning": {
+      "title": "Adaptive Learning",
+      "description": "Personalized study plans that adapt to your progress"
+    },
+    "progress": {
+      "title": "Progress Tracking",
+      "description": "Monitor your growth with detailed analytics and recommendations"
+    }
+  },
+  "stats": {
+    "students": "Active Students",
+    "diseases": "Diseases Studied",
+    "accuracy": "Average Accuracy",
+    "cases": "Practice Cases"
+  },
+  "ai": {
+    "title": "Chat with AI",
+    "subtitle": "Ask medical questions and get instant answers",
+    "placeholder": "Ask about disease symptoms...",
+    "send": "Send"
+  },
+  "cta": {
+    "title": "Start Your Medical Education Today",
+    "subtitle": "Join thousands of medical students and take your knowledge to the next level",
+    "getStarted": "Get Started for Free"
+  },
+  "commonDiseases": {
+    "title": "Common Diseases",
+    "subtitle": "Master the most prevalent diseases with comprehensive study materials, real student experiences, and AI-powered learning tools.",
+    "searchPlaceholder": "Search diseases...",
+    "addNew": "Add New Common Disease",
+    "showMore": "Show More",
+    "remaining": "remaining",
+    "noResults": "No diseases found matching your search.",
+    "startLearning": "Start Learning"
+  },
+  "rareIllnesses": {
+    "title": "Rare Illnesses",
+    "subtitle": "Explore comprehensive resources for rare diseases and conditions. Learn from expert cases, student experiences, and specialized medical insights.",
+    "searchPlaceholder": "Search rare illnesses...",
+    "addNew": "Add New Rare Illness",
+    "note": "Note: Rare diseases affect fewer than 1 in 2,000 people. These conditions require specialized knowledge and often involve complex diagnostic approaches.",
+    "showMore": "Show More",
+    "remaining": "remaining",
+    "noResults": "No rare illnesses found matching your search.",
+    "startLearning": "Start Learning"
+  },
+  "addDisease": {
+    "title": "Add New {{type}}",
+    "save": "Save Disease",
+    "cancel": "Cancel",
+    "name": "Disease Name",
+    "namePlaceholder": "Enter disease name",
+    "category": "Category",
+    "categoryPlaceholder": "Select category",
+    "difficulty": "Difficulty Level",
+    "difficultyPlaceholder": "Select difficulty",
+    "prevalence": "Prevalence",
+    "rarity": "Rarity",
+    "prevalencePlaceholder": "e.g., 1 in 100",
+    "rarityPlaceholder": "e.g., 1 in 10,000",
+    "studyTime": "Estimated Study Time",
+    "studyTimePlaceholder": "e.g., 2 hours",
+    "description": "Description",
+    "descriptionPlaceholder": "Provide a detailed description of the disease...",
+    "tags": "Tags",
+    "tagPlaceholder": "Add a tag...",
+    "required": "Please fill in all required fields (Name, Category, Difficulty).",
+    "success": "Disease Added Successfully!",
+    "successDescription": "{{name}} has been added to the {{type}} diseases list.",
+    "error": "Error",
+    "errorDescription": "Failed to add disease. Please try again."
+  },
+  "categories": {
+    "respiratory": "Respiratory",
+    "cardiovascular": "Cardiovascular",
+    "neurological": "Neurological",
+    "gastrointestinal": "Gastrointestinal",
+    "endocrine": "Endocrine",
+    "musculoskeletal": "Musculoskeletal",
+    "dermatological": "Dermatological",
+    "hematological": "Hematological",
+    "oncological": "Oncological",
+    "infectious": "Infectious",
+    "other": "Other"
+  },
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "footer": {
+    "description": "AI-powered learning platform for medical students",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "contact": "Contact",
+    "resources": "Resources",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "help": "Help",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 MediTash. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset"
+  }
+}

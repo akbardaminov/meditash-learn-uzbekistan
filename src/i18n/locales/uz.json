@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "commonDiseases": "Keng tarqalgan kasalliklar",
+    "rareIllnesses": "Nodir kasalliklar",
+    "login": "Kirish",
+    "signup": "Ro'yxatdan o'tish"
+  },
+  "hero": {
+    "title": "AI bilan tibbiy ta'limni o'rganing",
+    "subtitle": "Tibbiyot talabalar uchun maxsus yaratilgan aqlli o'rganish platformasi. Keng tarqalgan va nodir kasalliklarni o'rganing, haqiqiy holatlarda amaliyot qiling va AI yordamchisi bilan o'z bilimingizni sinab ko'ring.",
+    "getStarted": "Boshlash",
+    "seeExamples": "Misollarni ko'rish"
+  },
+  "features": {
+    "title": "Qanday ishlaydi",
+    "subtitle": "Tibbiy ta'limni osonlashtiruvchi uchta asosiy xususiyat",
+    "flashcards": {
+      "title": "Aqlli Flashcards",
+      "description": "AI yaratgan interaktiv karta-savollar bilan o'rganishni tezlashtiring"
+    },
+    "learning": {
+      "title": "Adaptiv O'rganish",
+      "description": "Sizning rivojlanishingizga moslashuvchi shaxsiy o'quv rejasi"
+    },
+    "progress": {
+      "title": "Rivojlanishni Kuzatish",
+      "description": "Batafsil tahlil va tavsiyalar bilan o'sishingizni kuzatib boring"
+    }
+  },
+  "stats": {
+    "students": "Faol talabalar",
+    "diseases": "O'rganilgan kasalliklar",
+    "accuracy": "O'rtacha aniqlik",
+    "cases": "Amaliy holatlar"
+  },
+  "ai": {
+    "title": "AI bilan gaplashing",
+    "subtitle": "Tibbiy savollaringizni bering va tez javob oling",
+    "placeholder": "Kasallik belgilari haqida savol bering...",
+    "send": "Jo'natish"
+  },
+  "cta": {
+    "title": "Tibbiy ta'limingizni bugun boshlang",
+    "subtitle": "Minglab tibbiyot talabalariga qo'shiling va o'z bilimingizni keyingi bosqichga olib chiqing",
+    "getStarted": "Bepul boshlash"
+  },
+  "commonDiseases": {
+    "title": "Keng tarqalgan kasalliklar",
+    "subtitle": "Eng keng tarqalgan kasalliklarni keng qamrovli o'quv materiallari, talabalarning haqiqiy tajribalari va AI yordamchi o'rganish vositalari bilan o'rganing.",
+    "searchPlaceholder": "Kasalliklarni qidirish...",
+    "addNew": "Yangi keng tarqalgan kasallik qo'shish",
+    "showMore": "Ko'proq ko'rsatish",
+    "remaining": "qolgan",
+    "noResults": "Qidiruvingizga mos kasallik topilmadi.",
+    "startLearning": "O'rganishni boshlash"
+  },
+  "rareIllnesses": {
+    "title": "Nodir kasalliklar",
+    "subtitle": "Nodir kasalliklar va holatlar uchun keng qamrovli resurslarni o'rganing. Mutaxassis holatlar, talabalar tajribasi va ixtisoslashgan tibbiy ma'lumotlardan o'rganing.",
+    "searchPlaceholder": "Nodir kasalliklarni qidirish...",
+    "addNew": "Yangi nodir kasallik qo'shish",
+    "note": "Eslatma: Nodir kasalliklar 2000 kishidan 1 tasiga ta'sir qiladi. Bu holatlar maxsus bilim talab qiladi va ko'pincha murakkab diagnostik yondashuvlarni o'z ichiga oladi.",
+    "showMore": "Ko'proq ko'rsatish",
+    "remaining": "qolgan",
+    "noResults": "Qidiruvingizga mos nodir kasallik topilmadi.",
+    "startLearning": "O'rganishni boshlash"
+  },
+  "addDisease": {
+    "title": "Yangi {{type}} qo'shish",
+    "save": "Kasallikni saqlash",
+    "cancel": "Bekor qilish",
+    "name": "Kasallik nomi",
+    "namePlaceholder": "Kasallik nomini kiriting",
+    "category": "Kategoriya",
+    "categoryPlaceholder": "Kategoriyani tanlang",
+    "difficulty": "Qiyinchilik darajasi",
+    "difficultyPlaceholder": "Qiyinchilikni tanlang",
+    "prevalence": "Tarqalish",
+    "rarity": "Nodirligi",
+    "prevalencePlaceholder": "masalan, 100 tadan 1",
+    "rarityPlaceholder": "masalan, 10,000 dan 1",
+    "studyTime": "Taxminiy o'rganish vaqti",
+    "studyTimePlaceholder": "masalan, 2 soat",
+    "description": "Tavsif",
+    "descriptionPlaceholder": "Kasallikning batafsil tavsifini bering...",
+    "tags": "Teglar",
+    "tagPlaceholder": "Teg qo'shing...",
+    "required": "Majburiy maydonlar (Nom, Kategoriya, Qiyinchilik) ni to'ldiring.",
+    "success": "Kasallik muvaffaqiyatli qo'shildi!",
+    "successDescription": "{{name}} {{type}} kasalliklar ro'yxatiga qo'shildi.",
+    "error": "Xatolik",
+    "errorDescription": "Kasallik qo'shishda xatolik. Qaytadan urinib ko'ring."
+  },
+  "categories": {
+    "respiratory": "Nafas olish",
+    "cardiovascular": "Yurak-qon tomir",
+    "neurological": "Nevrologik",
+    "gastrointestinal": "Oshqozon-ichak",
+    "endocrine": "Endokrin",
+    "musculoskeletal": "Mushak-skelet",
+    "dermatological": "Dermatologik",
+    "hematological": "Gematologik",
+    "oncological": "Onkologik",
+    "infectious": "Yuqumli",
+    "other": "Boshqa"
+  },
+  "difficulty": {
+    "beginner": "Boshlang'ich",
+    "intermediate": "O'rta",
+    "advanced": "Yuqori"
+  },
+  "footer": {
+    "description": "Tibbiyot talabalar uchun AI yordamchi ta'lim platformasi",
+    "quickLinks": "Tezkor havolalar",
+    "home": "Bosh sahifa",
+    "features": "Xususiyatlar",
+    "about": "Haqida",
+    "contact": "Aloqa",
+    "resources": "Resurslar",
+    "docs": "Hujjatlar",
+    "blog": "Blog",
+    "help": "Yordam",
+    "faq": "Tez-tez so'raladigan savollar",
+    "legal": "Huquqiy",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Foydalanish shartlari",
+    "copyright": "© 2024 MediTash. Barcha huquqlar himoyalangan."
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik",
+    "success": "Muvaffaqiyat",
+    "close": "Yopish",
+    "open": "Ochish",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "add": "Qo'shish",
+    "search": "Qidirish",
+    "filter": "Filtrlash",
+    "sort": "Saralash",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "submit": "Jo'natish",
+    "reset": "Qayta o'rnatish"
+  }
+}

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
       {/* Background Pattern */}
@@ -11,16 +13,11 @@ const HeroSection = () => {
         {/* Left Content */}
         <div className="space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Transform Your{" "}
-            <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              Medical
-            </span>{" "}
-            Education with AI
+            {t('hero.title')}
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
-            Record your medical knowledge in your own words. Our AI transforms it into 
-            comprehensive study materials and practice questions based on proven learning methods.
+            {t('hero.subtitle')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -29,14 +26,14 @@ const HeroSection = () => {
               size="xl" 
               className="text-lg px-8 py-4"
             >
-              Get Started
+              {t('hero.getStarted')}
             </Button>
             <Button 
               variant="outline" 
               size="xl" 
               className="text-lg px-8 py-4 border-2 hover:bg-primary/10 hover:border-primary hover:text-primary"
             >
-              See Examples
+              {t('hero.seeExamples')}
             </Button>
           </div>
         </div>

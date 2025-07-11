@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Clock, Users, BookOpen, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDiseasesStorage, Disease } from "@/hooks/useDiseasesStorage";
 
 const CommonDiseases = () => {
@@ -14,6 +15,7 @@ const CommonDiseases = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const { getDiseasesOfType } = useDiseasesStorage();
+  const { t } = useTranslation();
 
   const defaultDiseases: Disease[] = [
     {
@@ -137,17 +139,16 @@ const CommonDiseases = () => {
       <section className="py-20 bg-gradient-feature">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Common Diseases
+            {t('commonDiseases.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Master the most prevalent diseases with comprehensive study materials, 
-            real student experiences, and AI-powered learning tools.
+            {t('commonDiseases.subtitle')}
           </p>
           
           <div className="max-w-md mx-auto relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
-              placeholder="Search diseases..."
+              placeholder={t('commonDiseases.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 py-3 text-lg"
@@ -208,7 +209,7 @@ const CommonDiseases = () => {
                   
                   <Button className="w-full group-hover:bg-primary/90 transition-colors">
                     <BookOpen className="w-4 h-4 mr-2" />
-                    Start Learning
+                    {t('commonDiseases.startLearning')}
                   </Button>
                 </CardContent>
               </Card>
@@ -224,7 +225,7 @@ const CommonDiseases = () => {
                 className="min-w-40"
               >
                 <ChevronDown className="w-4 h-4 mr-2" />
-                Show More ({filteredDiseases.length - visibleCount} remaining)
+                {t('commonDiseases.showMore')} ({filteredDiseases.length - visibleCount} {t('commonDiseases.remaining')})
               </Button>
             </div>
           )}
@@ -232,7 +233,7 @@ const CommonDiseases = () => {
           {filteredDiseases.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground text-lg">
-                No diseases found matching your search.
+                {t('commonDiseases.noResults')}
               </p>
             </div>
           )}

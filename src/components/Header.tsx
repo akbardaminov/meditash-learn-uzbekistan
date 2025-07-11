@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ModeToggle } from "@/components/mode-toggle";
-// Using uploaded logo with transparent background
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="bg-card/80 backdrop-blur-md border-b border-border/30 sticky top-0 z-50 shadow-soft">
@@ -27,22 +29,24 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <Link to="/" className="text-foreground hover:text-primary transition-colors">
-            Home
+            {t('nav.home')}
           </Link>
           <Link to="/common-diseases" className="text-foreground hover:text-primary transition-colors">
-            Common Diseases
+            {t('nav.commonDiseases')}
           </Link>
           <Link to="/rare-illnesses" className="text-foreground hover:text-primary transition-colors">
-            Rare Illnesses
+            {t('nav.rareIllnesses')}
           </Link>
+          <LanguageSwitcher />
           <ModeToggle />
           <Button variant="hero" size="sm">
-            Get Started
+            {t('hero.getStarted')}
           </Button>
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
           <ModeToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -61,24 +65,24 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              {t('nav.home')}
             </Link>
             <Link 
               to="/common-diseases" 
               className="text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Common Diseases
+              {t('nav.commonDiseases')}
             </Link>
             <Link 
               to="/rare-illnesses" 
               className="text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Rare Illnesses
+              {t('nav.rareIllnesses')}
             </Link>
             <Button variant="hero" size="sm" className="w-fit">
-              Get Started
+              {t('hero.getStarted')}
             </Button>
           </nav>
         </div>

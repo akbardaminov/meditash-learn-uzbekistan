@@ -107,7 +107,7 @@ const RareIllnesses = () => {
   useEffect(() => {
     const userIllnesses = getDiseasesOfType('rare');
     setAllIllnesses([...defaultRareIllnesses, ...userIllnesses]);
-  }, [refreshTrigger]);
+  }, [refreshTrigger, getDiseasesOfType]);
 
   const filteredIllnesses = allIllnesses.filter(illness =>
     illness.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

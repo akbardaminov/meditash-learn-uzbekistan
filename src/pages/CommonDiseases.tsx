@@ -101,7 +101,7 @@ const CommonDiseases = () => {
   useEffect(() => {
     const userDiseases = getDiseasesOfType('common');
     setAllDiseases([...defaultDiseases, ...userDiseases]);
-  }, [refreshTrigger]);
+  }, [refreshTrigger, getDiseasesOfType]);
 
   const filteredDiseases = allDiseases.filter(disease =>
     disease.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

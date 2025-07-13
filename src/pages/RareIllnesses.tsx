@@ -1,19 +1,25 @@
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AddDiseaseSection from "@/components/AddDiseaseSection";
+import DiseaseSearchResults from "@/components/DiseaseSearchResults";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Search, Clock, Users, BookOpen, AlertTriangle, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDiseasesStorage, Disease } from "@/hooks/useDiseasesStorage";
+import { useDiseaseSearch, SearchedDisease } from "@/hooks/useDiseaseSearch";
 
 const RareIllnesses = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(4);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [searchResults, setSearchResults] = useState<SearchedDisease[]>([]);
+  const [showApiResults, setShowApiResults] = useState(false);
   const { getDiseasesOfType } = useDiseasesStorage();
+  const { searchDiseases, loading, error } = useDiseaseSearch();
 
   const defaultRareIllnesses: Disease[] = [
     {
@@ -115,6 +121,26 @@ const RareIllnesses = () => {
     illness.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  const handleSearch = useCallback(async (value: string) => {
+    setSearchTerm(value);
+    
+    if (value.trim().length > 2) {
+      const result = await searchDiseases(value, 'rare');
+      if (result) {
+        setSearchResults(result.diseases);
+        setShowApiResults(true);
+      }
+    } else {
+      setShowApiResults(false);
+      setSearchResults([]);
+    }
+  }, [searchDiseases]);
+
+  const handleDiseaseSelect = (disease: SearchedDisease) => {
+    console.log('Selected rare illness:', disease);
+    // Here you could navigate to a detailed page or show more information
+  };
+
   const visibleIllnesses = filteredIllnesses.slice(0, visibleCount);
   const hasMoreIllnesses = filteredIllnesses.length > visibleCount;
 
@@ -167,12 +193,27 @@ const RareIllnesses = () => {
             <Input
               placeholder="Search rare illnesses..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
               className="pl-10 py-3 text-lg"
             />
           </div>
         </div>
       </section>
+
+      {/* Search Results */}
+      {showApiResults && (
+        <section className="py-8 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <DiseaseSearchResults
+              diseases={searchResults}
+              loading={loading}
+              error={error}
+              query={searchTerm}
+              onDiseaseSelect={handleDiseaseSelect}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Add Disease Section */}
       <section className="py-12">
@@ -194,6 +235,7 @@ const RareIllnesses = () => {
       </section>
 
       {/* Illnesses Grid */}
+      {!showApiResults && (
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -276,6 +318,7 @@ const RareIllnesses = () => {
           )}
         </div>
       </section>
+      )}
 
       <Footer />
     </div>

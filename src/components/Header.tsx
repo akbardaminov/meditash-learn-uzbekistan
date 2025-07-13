@@ -83,7 +83,7 @@ const Header = () => {
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
         isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-card/95 backdrop-blur-md border-t border-border/30 shadow-lg">
+        <div className="bg-background/95 border-t border-border/30 shadow-lg">
           <nav className="flex flex-col p-6 gap-6">
             {/* Mobile Language and Theme Controls for small screens */}
             <div className="sm:hidden flex items-center justify-between pb-4 border-b border-border/30">
@@ -96,21 +96,21 @@ const Header = () => {
             
             <Link 
               to="/" 
-              className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2 hover:bg-accent/50 rounded-md px-3 -mx-3"
+              className="text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200 text-lg font-medium py-3 rounded-lg px-4 -mx-1"
               onClick={closeMenu}
             >
               {t('nav.home')}
             </Link>
             <Link 
               to="/common-diseases" 
-              className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2 hover:bg-accent/50 rounded-md px-3 -mx-3"
+              className="text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200 text-lg font-medium py-3 rounded-lg px-4 -mx-1"
               onClick={closeMenu}
             >
               {t('nav.commonDiseases')}
             </Link>
             <Link 
               to="/rare-illnesses" 
-              className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2 hover:bg-accent/50 rounded-md px-3 -mx-3"
+              className="text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200 text-lg font-medium py-3 rounded-lg px-4 -mx-1"
               onClick={closeMenu}
             >
               {t('nav.rareIllnesses')}
@@ -132,7 +132,7 @@ const Header = () => {
       {/* Mobile Backdrop */}
       {isMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40" 
+          className="lg:hidden fixed inset-0 bg-black/10 z-40" 
           onClick={closeMenu}
         />
       )}

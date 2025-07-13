@@ -58,7 +58,7 @@ const Header = () => {
           </div>
           <button
             onClick={toggleMenu}
-            className="p-2 hover:bg-accent rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            className="p-2 hover:bg-primary/10 hover:text-primary rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <div className="relative w-6 h-6">
@@ -129,13 +129,6 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Mobile Backdrop */}
-      {isMenuOpen && (
-        <div 
-          className="lg:hidden fixed inset-0 bg-black/10 z-40" 
-          onClick={closeMenu}
-        />
-      )}
     </header>
   );
 };

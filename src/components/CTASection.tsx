@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const CTASection = () => {
+  const { t } = useTranslation();
   return (
     <section className="py-20 bg-gradient-hero relative overflow-hidden">
       {/* Background Pattern */}
@@ -13,19 +15,19 @@ const CTASection = () => {
       
       <div className="container mx-auto px-4 text-center relative z-10">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-          Start Your Medical Mastery Today
+          {t('cta.title')}
         </h2>
         
         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          Join thousands of medical students who are already advancing their careers with MediTash
+          {t('cta.subtitle')}
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           {[
-            "AI-Powered Learning",
-            "Student Experiences",
-            "Progress Tracking",
-            "Free to Start"
+            t('cta.feature1'),
+            t('cta.feature2'),
+            t('cta.feature3'),
+            t('cta.feature4')
           ].map((feature, index) => (
             <div key={index} className="flex items-center gap-2 text-white">
               <CheckCircle className="w-5 h-5 text-accent" />
@@ -39,12 +41,12 @@ const CTASection = () => {
           size="xl" 
           className="text-lg px-10 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300 group"
         >
-          Get Started Now
+          {t('cta.button')}
           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
         </Button>
         
         <p className="text-sm text-white/70 mt-4">
-          No credit card required • Start learning in minutes
+          {t('cta.note')}
         </p>
       </div>
     </section>

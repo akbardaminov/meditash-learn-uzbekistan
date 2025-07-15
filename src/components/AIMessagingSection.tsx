@@ -3,7 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Bot } from "lucide-react";
+import { useTranslation } from "react-i18next";
+
 const AIMessagingSection = () => {
+  const { t } = useTranslation();
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const handleSendMessage = async () => {
@@ -19,10 +22,10 @@ const AIMessagingSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-blue-500 md:text-4xl">
-            Ask Our AI Assistant
+            {t('ai.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Get instant answers to your medical questions
+            {t('ai.subtitle')}
           </p>
         </div>
         
@@ -36,13 +39,13 @@ const AIMessagingSection = () => {
                 <div>
                   <h3 className="font-semibold">MediTash AI</h3>
                   <p className="text-sm text-muted-foreground">
-                    Hello, member! What is your concern? Or do you want to study medicine with MediTash?
+                    {t('ai.greeting')}
                   </p>
                 </div>
               </div>
               
               <div className="space-y-4">
-                <Textarea placeholder="Ask about diseases, symptoms, treatments, or study materials..." value={message} onChange={e => setMessage(e.target.value)} className="min-h-[100px] resize-none" onKeyPress={e => {
+                <Textarea placeholder={t('ai.placeholder')} value={message} onChange={e => setMessage(e.target.value)} className="min-h-[100px] resize-none" onKeyPress={e => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                   e.preventDefault();
                   handleSendMessage();
@@ -52,16 +55,16 @@ const AIMessagingSection = () => {
                 <div className="flex justify-end">
                   <Button onClick={handleSendMessage} disabled={!message.trim() || isLoading} className="flex items-center gap-2">
                     <Send className="w-4 h-4" />
-                    {isLoading ? "Sending..." : "Send Message"}
+                    {isLoading ? t('common.sending') : t('ai.send')}
                   </Button>
                 </div>
               </div>
               
               {/* Example Questions */}
               <div className="mt-8 pt-6 border-t border-border">
-                <h4 className="font-medium mb-3">Popular Questions:</h4>
+                <h4 className="font-medium mb-3">{t('ai.popularQuestions')}:</h4>
                 <div className="flex flex-wrap gap-2">
-                  {["What are the symptoms of pneumonia?", "How to prepare for USMLE?", "Common cardiology conditions", "Study tips for medical students"].map((question, index) => <Button key={index} variant="outline" size="sm" onClick={() => setMessage(question)} className="text-sm">
+                  {[t('ai.question1'), t('ai.question2'), t('ai.question3'), t('ai.question4')].map((question, index) => <Button key={index} variant="outline" size="sm" onClick={() => setMessage(question)} className="text-sm">
                       {question}
                     </Button>)}
                 </div>

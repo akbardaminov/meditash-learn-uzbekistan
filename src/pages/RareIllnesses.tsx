@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Search, Clock, Users, BookOpen, AlertTriangle, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useDiseasesStorage, Disease } from "@/hooks/useDiseasesStorage";
 import { useDiseaseSearch, SearchedDisease } from "@/hooks/useDiseaseSearch";
 
 const RareIllnesses = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(4);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
@@ -180,18 +182,17 @@ const RareIllnesses = () => {
           <div className="flex items-center justify-center gap-2 mb-4">
             <AlertTriangle className="w-8 h-8 text-primary" />
             <h1 className="text-4xl md:text-5xl font-bold">
-              Rare Illnesses
+              {t('rareIllnesses.title')}
             </h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Explore comprehensive resources for rare diseases and conditions. 
-            Learn from expert cases, student experiences, and specialized medical insights.
+            {t('rareIllnesses.subtitle')}
           </p>
           
           <div className="max-w-md mx-auto relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
-              placeholder="Search rare illnesses..."
+              placeholder={t('rareIllnesses.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
               className="pl-10 py-3 text-lg"
@@ -227,8 +228,7 @@ const RareIllnesses = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground">
-              <strong>Note:</strong> Rare diseases affect fewer than 1 in 2,000 people. 
-              These conditions require specialized knowledge and often involve complex diagnostic approaches.
+              <strong>{t('rareIllnesses.note')}:</strong> {t('rareIllnesses.noteText')}
             </p>
           </div>
         </div>
@@ -288,7 +288,7 @@ const RareIllnesses = () => {
                   
                   <Button className="w-full group-hover:bg-primary/90 transition-colors">
                     <BookOpen className="w-4 h-4 mr-2" />
-                    Start Learning
+                    {t('rareIllnesses.startLearning')}
                   </Button>
                 </CardContent>
               </Card>
@@ -304,7 +304,7 @@ const RareIllnesses = () => {
                 className="min-w-40"
               >
                 <ChevronDown className="w-4 h-4 mr-2" />
-                Show More ({filteredIllnesses.length - visibleCount} remaining)
+                {t('rareIllnesses.showMore')} ({filteredIllnesses.length - visibleCount} {t('rareIllnesses.remaining')})
               </Button>
             </div>
           )}
@@ -312,7 +312,7 @@ const RareIllnesses = () => {
           {filteredIllnesses.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground text-lg">
-                No rare illnesses found matching your search.
+                {t('rareIllnesses.noResults')}
               </p>
             </div>
           )}

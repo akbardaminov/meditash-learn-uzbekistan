@@ -1,31 +1,34 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, BookOpen, Award, TrendingUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const StatsSection = () => {
+  const { t } = useTranslation();
+  
   const stats = [
     {
       icon: Users,
-      label: "Active Students",
+      label: t('stats.activeStudents'),
       value: "12,000+",
-      description: "Learning medical concepts daily"
+      description: t('stats.activeStudentsDesc')
     },
     {
       icon: BookOpen,
-      label: "Diseases Covered",
+      label: t('stats.diseasesCovered'),
       value: "500+",
-      description: "Comprehensive medical database"
+      description: t('stats.diseasesCoveredDesc')
     },
     {
       icon: Award,
-      label: "Success Rate",
+      label: t('stats.successRate'),
       value: "94%",
-      description: "Students pass their exams"
+      description: t('stats.successRateDesc')
     },
     {
       icon: TrendingUp,
-      label: "Study Efficiency",
+      label: t('stats.studyEfficiency'),
       value: "3x Faster",
-      description: "Compared to traditional methods"
+      description: t('stats.studyEfficiencyDesc')
     }
   ];
 
@@ -34,10 +37,10 @@ const StatsSection = () => {
       <div className="container mx-auto px-8 md:px-12 lg:px-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trusted by Medical Students Worldwide
+            {t('stats.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of students who have transformed their medical education with MediTash
+            {t('stats.subtitle')}
           </p>
         </div>
         

@@ -1,21 +1,25 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 import flashcardsImage from "@/assets/feature-flashcards.jpg";
 import learningImage from "@/assets/feature-learning.jpg";
 import progressImage from "@/assets/feature-progress.jpg";
+
 const FeaturesSection = () => {
+  const { t } = useTranslation();
+  
   const features = [{
-    title: "Smart AI-Powered Flashcards",
-    description: "Master medical concepts with intelligent flashcards that adapt to your learning style. Our AI analyzes your performance to focus on areas that need improvement, helping you memorize disease facts quickly and efficiently.",
+    title: t('features.flashcards.title'),
+    description: t('features.flashcards.description'),
     image: flashcardsImage,
     imagePosition: "left"
   }, {
-    title: "Personalized Learning Paths",
-    description: "Experience tailored education that adapts to your medical field and study pace. Whether you're studying cardiology, pediatrics, or any other specialty, MediTash creates a customized learning journey just for you.",
+    title: t('features.learning.title'),
+    description: t('features.learning.description'),
     image: learningImage,
     imagePosition: "right"
   }, {
-    title: "Track Your Progress",
-    description: "Monitor your medical knowledge growth with comprehensive progress tracking. View detailed quiz statistics, identify knowledge gaps, and celebrate your achievements as you advance through your medical education.",
+    title: t('features.progress.title'),
+    description: t('features.progress.description'),
     image: progressImage,
     imagePosition: "left"
   }];
@@ -23,10 +27,10 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-blue-500 text-center md:text-4xl">
-            Why Choose MediTash?
+            {t('features.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Advanced features designed specifically for medical education
+            {t('features.subtitle')}
           </p>
         </div>
         

@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const languages = [
-  { code: 'uz', name: 'O\'zbekcha', flag: '🇺🇿' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'uz', name: 'O\'zbekcha' },
+  { code: 'ru', name: 'Русский' },
+  { code: 'en', name: 'English' },
 ];
 
 const LanguageSwitcher = () => {
@@ -31,8 +31,8 @@ const LanguageSwitcher = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="gap-2 hover:bg-primary/10 hover:text-primary transition-all duration-200">
           <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage.flag} {currentLanguage.name}</span>
-          <span className="sm:hidden">{currentLanguage.flag}</span>
+          <span className="hidden sm:inline">{currentLanguage.name}</span>
+          <span className="sm:hidden">{currentLanguage.code.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
@@ -42,7 +42,6 @@ const LanguageSwitcher = () => {
             onClick={() => handleLanguageChange(language.code)}
             className={`cursor-pointer hover:bg-primary/10 hover:text-primary transition-all duration-200 ${i18n.language === language.code ? 'bg-primary/20 text-primary' : ''}`}
           >
-            <span className="mr-2">{language.flag}</span>
             {language.name}
           </DropdownMenuItem>
         ))}

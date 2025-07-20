@@ -1,15 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { SectionWrapper } from "@/components/ui/section-wrapper";
 
 const HeroSection = () => {
   const { t } = useTranslation();
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-mesh opacity-40"></div>
-      
+    <SectionWrapper variant="hero" className="min-h-screen">
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
         {/* Left Content */}
         <div className="space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
@@ -74,7 +72,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

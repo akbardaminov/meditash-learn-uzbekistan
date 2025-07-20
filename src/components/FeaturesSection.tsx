@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import flashcardsImage from "@/assets/feature-flashcards.jpg";
 import learningImage from "@/assets/feature-learning.jpg";
 import progressImage from "@/assets/feature-progress.jpg";
+import { SectionWrapper } from "@/components/ui/section-wrapper";
 
 const FeaturesSection = () => {
   const { t } = useTranslation();
@@ -23,7 +24,9 @@ const FeaturesSection = () => {
     image: progressImage,
     imagePosition: "left"
   }];
-  return <section className="py-20 bg-gradient-feature">
+
+  return (
+    <SectionWrapper variant="feature">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-blue-500 text-center md:text-4xl">
@@ -35,7 +38,8 @@ const FeaturesSection = () => {
         </div>
         
         <div className="space-y-20">
-          {features.map((feature, index) => <Card key={index} className="overflow-hidden shadow-medium hover:shadow-glow transition-spring hover:scale-[1.02] bg-card/80 backdrop-blur-md border border-border/30">
+          {features.map((feature, index) => (
+            <Card key={index} className="overflow-hidden shadow-medium hover:shadow-glow transition-spring hover:scale-[1.02] bg-card/80 backdrop-blur-md border border-border/30 max-w-md mx-auto">
               <CardContent className="p-0">
                 <div className={`flex flex-col ${feature.imagePosition === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center`}>
                   <div className="md:w-1/2">
@@ -51,9 +55,12 @@ const FeaturesSection = () => {
                   </div>
                 </div>
               </CardContent>
-            </Card>)}
+            </Card>
+          ))}
         </div>
       </div>
-    </section>;
+    </SectionWrapper>
+  );
 };
+
 export default FeaturesSection;

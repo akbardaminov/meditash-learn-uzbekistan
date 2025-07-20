@@ -4,11 +4,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Bot } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { SectionWrapper } from "@/components/ui/section-wrapper";
 
 const AIMessagingSection = () => {
   const { t } = useTranslation();
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     setIsLoading(true);
@@ -18,7 +20,9 @@ const AIMessagingSection = () => {
       setMessage("");
     }, 1500);
   };
-  return <section className="py-20 bg-card">
+
+  return (
+    <SectionWrapper variant="default">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-blue-500 md:text-4xl">
@@ -45,15 +49,25 @@ const AIMessagingSection = () => {
               </div>
               
               <div className="space-y-4">
-                <Textarea placeholder={t('ai.placeholder')} value={message} onChange={e => setMessage(e.target.value)} className="min-h-[100px] resize-none" onKeyPress={e => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSendMessage();
-                }
-              }} />
+                <Textarea 
+                  placeholder={t('ai.placeholder')} 
+                  value={message} 
+                  onChange={e => setMessage(e.target.value)} 
+                  className="min-h-[100px] resize-none" 
+                  onKeyPress={e => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage();
+                    }
+                  }} 
+                />
                 
                 <div className="flex justify-end">
-                  <Button onClick={handleSendMessage} disabled={!message.trim() || isLoading} className="flex items-center gap-2">
+                  <Button 
+                    onClick={handleSendMessage} 
+                    disabled={!message.trim() || isLoading} 
+                    className="flex items-center gap-2"
+                  >
                     <Send className="w-4 h-4" />
                     {isLoading ? t('common.sending') : t('ai.send')}
                   </Button>
@@ -64,15 +78,25 @@ const AIMessagingSection = () => {
               <div className="mt-8 pt-6 border-t border-border">
                 <h4 className="font-medium mb-3">{t('ai.popularQuestions')}:</h4>
                 <div className="flex flex-wrap gap-2">
-                  {[t('ai.question1'), t('ai.question2'), t('ai.question3'), t('ai.question4')].map((question, index) => <Button key={index} variant="outline" size="sm" onClick={() => setMessage(question)} className="text-sm">
+                  {[t('ai.question1'), t('ai.question2'), t('ai.question3'), t('ai.question4')].map((question, index) => (
+                    <Button 
+                      key={index} 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setMessage(question)} 
+                      className="text-sm"
+                    >
                       {question}
-                    </Button>)}
+                    </Button>
+                  ))}
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>;
+    </SectionWrapper>
+  );
 };
+
 export default AIMessagingSection;

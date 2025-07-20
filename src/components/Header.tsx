@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ModeToggle } from "@/components/mode-toggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import meditashLogo from "@/assets/meditash-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 text-xl md:text-2xl font-bold text-primary hover:opacity-80 transition-opacity">
           <img 
-            src="/lovable-uploads/96bc904b-55e4-46da-a477-00dce56f87c2.png" 
+            src={meditashLogo} 
             alt="MediTash Logo" 
             className="w-7 h-7 md:w-8 md:h-8"
             style={{
@@ -29,7 +30,6 @@ const Header = () => {
           />
           <span className="hidden sm:block">MediTash</span>
         </Link>
-        
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -49,7 +49,6 @@ const Header = () => {
             </Button>
           </div>
         </nav>
-
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2">

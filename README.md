@@ -1,4 +1,6 @@
-# Welcome to your Lovable project
+# Welcome to your MediTash project
+
+This project is now fully yours. All previous Lovable references have been removed.
 
 ## Project info
 

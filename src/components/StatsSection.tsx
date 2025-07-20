@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, BookOpen, Award, TrendingUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { SectionWrapper } from "@/components/ui/section-wrapper";
 
 const StatsSection = () => {
   const { t } = useTranslation();
@@ -33,7 +34,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-feature">
+    <SectionWrapper variant="stats">
       <div className="container mx-auto px-8 md:px-12 lg:px-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -59,7 +60,7 @@ const StatsSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

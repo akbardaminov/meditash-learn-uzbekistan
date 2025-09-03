@@ -10,7 +10,15 @@
     "title": "AI bilan tibbiy ta'limni o'rganing",
     "subtitle": "Tibbiyot talabalar uchun maxsus yaratilgan aqlli o'rganish platformasi. Keng tarqalgan va nodir kasalliklarni o'rganing, haqiqiy holatlarda amaliyot qiling va AI yordamchisi bilan o'z bilimingizni sinab ko'ring.",
     "getStarted": "Boshlash",
-    "seeExamples": "Misollarni ko'rish"
+    "seeExamples": "Misollarni ko'rish",
+    "mock": {
+      "dashboardTitle": "Tibbiy o'rganish paneli",
+      "currentTopic": "Joriy mavzu:",
+      "topicExample": "Yurak-qon tomir tizimi — yurak anatomiyasi",
+      "problem": "Muammo: Talabalar murakkab anatomiya bilan qiynalmoqda",
+      "solution": "Yechim: AI yaratgan vizual flashkarta",
+      "progress": "Jarayon: 85% yakunlangan"
+    }
   },
   "features": {
     "title": "Qanday ishlaydi",
@@ -38,7 +46,14 @@
     "title": "AI bilan gaplashing",
     "subtitle": "Tibbiy savollaringizni bering va tez javob oling",
     "placeholder": "Kasallik belgilari haqida savol bering...",
-    "send": "Jo'natish"
+    "send": "Jo'natish",
+    "brand": "MediTash AI",
+    "greeting": "Bugun sizga o'rganishda qanday yordam bera olaman?",
+    "popularQuestions": "Ommabop savollar",
+    "question1": "Anemiya belgilari qanday?",
+    "question2": "Viral va bakterial infeksiyani qanday ajratish mumkin?",
+    "question3": "Kardiologiya uchun eng yaxshi o'quv rejasi?",
+    "question4": "Diabet patofiziologiyasini qisqacha tushuntiring"
   },
   "cta": {
     "title": "Tibbiy ta'limingizni bugun boshlang",
@@ -112,6 +127,11 @@
   },
   "footer": {
     "description": "Tibbiyot talabalar uchun AI yordamchi ta'lim platformasi",
+    "company": "KOMPANIYA",
+    "social": "IJTIMOIY TARMOQLAR",
+    "instagram": "Instagram",
+    "telegramComingSoon": "Telegram (tez orada)",
+    "facebookComingSoon": "Facebook (tez orada)",
     "quickLinks": "Tezkor havolalar",
     "home": "Bosh sahifa",
     "features": "Xususiyatlar",
@@ -120,12 +140,12 @@
     "resources": "Resurslar",
     "docs": "Hujjatlar",
     "blog": "Blog",
-    "help": "Yordam",
+    "help": "Yordam markazi",
     "faq": "Tez-tez so'raladigan savollar",
     "legal": "Huquqiy",
     "privacy": "Maxfiylik siyosati",
     "terms": "Foydalanish shartlari",
-    "copyright": "© 2024 MediTash. Barcha huquqlar himoyalangan."
+    "copyright": "© {{year}} MediTash. Barcha huquqlar himoyalangan."
   },
   "common": {
     "loading": "Yuklanmoqda...",
@@ -145,5 +165,21 @@
     "previous": "Oldingi",
     "submit": "Jo'natish",
     "reset": "Qayta o'rnatish"
+  },
+  "notFound": {
+    "code": "404",
+    "message": "Uzr! Sahifa topilmadi",
+    "returnHome": "Bosh sahifaga qaytish"
+  },
+  "search": {
+    "loading": "Kasalliklar qidirilmoqda...",
+    "error": "Qidiruv xatosi",
+    "noResultsFor": "\"{{query}}\" uchun kasallik topilmadi",
+    "tryDifferent": "Boshqa so'zlarni sinab ko'ring yoki imloni tekshiring",
+    "resultsFor": "\"{{query}}\" bo'yicha natijalar",
+    "resultsCount": "{{count}} ta natija",
+    "commonDisease": "Keng tarqalgan kasallik",
+    "rareIllness": "Nodir kasallik",
+    "learnMore": "Batafsil"
   }
 }

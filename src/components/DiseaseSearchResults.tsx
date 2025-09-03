@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,11 +21,12 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
   query,
   onDiseaseSelect
 }) => {
+  const { t } = useTranslation();
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
         <Loader2 className="w-6 h-6 animate-spin mr-2" />
-        <span className="text-muted-foreground">Searching diseases...</span>
+        <span className="text-muted-foreground">{t('search.loading')}</span>
       </div>
     );
   }
@@ -32,7 +34,7 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-destructive text-lg mb-2">Search Error</p>
+        <p className="text-destructive text-lg mb-2">{t('search.error')}</p>
         <p className="text-muted-foreground">{error}</p>
       </div>
     );
@@ -46,10 +48,10 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
     return (
       <div className="text-center py-12">
         <p className="text-muted-foreground text-lg">
-          No diseases found for "{query}"
+          {t('search.noResultsFor', { query })}
         </p>
         <p className="text-sm text-muted-foreground mt-2">
-          Try different search terms or check the spelling
+          {t('search.tryDifferent')}
         </p>
       </div>
     );
@@ -65,10 +67,10 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">
-          Search Results for "{query}"
+          {t('search.resultsFor', { query })}
         </h3>
         <Badge variant="outline">
-          {diseases.length} result{diseases.length !== 1 ? 's' : ''}
+          {t('search.resultsCount', { count: diseases.length })}
         </Badge>
       </div>
       
@@ -85,7 +87,7 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
                   variant="outline" 
                   className={`text-xs ${getCategoryColor(disease.category)}`}
                 >
-                  {disease.category === 'common' ? 'Common Disease' : 'Rare Illness'}
+                  {disease.category === 'common' ? t('search.commonDisease') : t('search.rareIllness')}
                 </Badge>
                 <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>
@@ -109,7 +111,7 @@ const DiseaseSearchResults: React.FC<DiseaseSearchResultsProps> = ({
                 }}
               >
                 <BookOpen className="w-4 h-4 mr-2" />
-                Learn More
+                {t('search.learnMore')}
               </Button>
             </CardContent>
           </Card>

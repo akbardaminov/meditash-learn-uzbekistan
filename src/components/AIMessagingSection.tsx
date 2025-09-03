@@ -41,7 +41,7 @@ const AIMessagingSection = () => {
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">MediTash AI</h3>
+                  <h3 className="font-semibold">{t('ai.brand')}</h3>
                   <p className="text-sm text-muted-foreground">
                     {t('ai.greeting')}
                   </p>
@@ -69,7 +69,7 @@ const AIMessagingSection = () => {
                     className="flex items-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    {isLoading ? t('common.sending') : t('ai.send')}
+                    {isLoading ? t('common.loading') : t('ai.send')}
                   </Button>
                 </div>
               </div>

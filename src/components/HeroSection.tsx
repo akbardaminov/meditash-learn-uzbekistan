@@ -44,27 +44,27 @@ const HeroSection = () => {
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-muted-foreground ml-4">Medical Learning Dashboard</span>
+                <span className="text-sm text-muted-foreground ml-4">{t('hero.mock.dashboardTitle')}</span>
               </div>
               
               <div className="space-y-3">
                 <div className="bg-muted/30 rounded-lg p-4">
-                  <h3 className="font-semibold text-primary mb-2">Current Topic:</h3>
-                  <p className="text-sm text-muted-foreground">Cardiovascular System - Heart Anatomy</p>
+                  <h3 className="font-semibold text-primary mb-2">{t('hero.mock.currentTopic')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('hero.mock.topicExample')}</p>
                 </div>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm">Problem: Students struggling with complex anatomy</span>
+                    <span className="text-sm">{t('hero.mock.problem')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    <span className="text-sm">Solution: AI-generated visual flashcards</span>
+                    <span className="text-sm">{t('hero.mock.solution')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary-glow rounded-full"></div>
-                    <span className="text-sm">Progress: 85% completion rate</span>
+                    <span className="text-sm">{t('hero.mock.progress')}</span>
                   </div>
                 </div>
               </div>

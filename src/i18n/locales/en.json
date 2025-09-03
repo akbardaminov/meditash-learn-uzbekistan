@@ -10,7 +10,15 @@
     "title": "Learn Medicine with AI",
     "subtitle": "An intelligent learning platform built specifically for medical students. Study common and rare diseases, practice with real cases, and test your knowledge with our AI assistant.",
     "getStarted": "Get Started",
-    "seeExamples": "See Examples"
+    "seeExamples": "See Examples",
+    "mock": {
+      "dashboardTitle": "Medical Learning Dashboard",
+      "currentTopic": "Current Topic:",
+      "topicExample": "Cardiovascular System - Heart Anatomy",
+      "problem": "Problem: Students struggling with complex anatomy",
+      "solution": "Solution: AI-generated visual flashcards",
+      "progress": "Progress: 85% completion rate"
+    }
   },
   "features": {
     "title": "How It Works",
@@ -38,7 +46,14 @@
     "title": "Chat with AI",
     "subtitle": "Ask medical questions and get instant answers",
     "placeholder": "Ask about disease symptoms...",
-    "send": "Send"
+    "send": "Send",
+    "brand": "MediTash AI",
+    "greeting": "How can I help you learn today?",
+    "popularQuestions": "Popular questions",
+    "question1": "What are symptoms of anemia?",
+    "question2": "How to differentiate viral vs bacterial infection?",
+    "question3": "Best study plan for cardiology?",
+    "question4": "Explain diabetes pathophysiology briefly"
   },
   "cta": {
     "title": "Start Your Medical Education Today",
@@ -111,7 +126,12 @@
     "advanced": "Advanced"
   },
   "footer": {
-    "description": "AI-powered learning platform for medical students",
+    "description": "Revolutionizing medical education in Uzbekistan. Learn, connect, and grow with MediTash.",
+    "company": "COMPANY",
+    "social": "SOCIAL MEDIA",
+    "instagram": "Instagram",
+    "telegramComingSoon": "Telegram (coming soon)",
+    "facebookComingSoon": "Facebook (coming soon)",
     "quickLinks": "Quick Links",
     "home": "Home",
     "features": "Features",
@@ -120,12 +140,12 @@
     "resources": "Resources",
     "docs": "Documentation",
     "blog": "Blog",
-    "help": "Help",
+    "help": "Help Center",
     "faq": "FAQ",
     "legal": "Legal",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "copyright": "© 2024 MediTash. All rights reserved."
+    "copyright": "© {{year}} MediTash. All rights reserved."
   },
   "common": {
     "loading": "Loading...",
@@ -145,5 +165,22 @@
     "previous": "Previous",
     "submit": "Submit",
     "reset": "Reset"
+  }
+  ,
+  "notFound": {
+    "code": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "search": {
+    "loading": "Searching diseases...",
+    "error": "Search Error",
+    "noResultsFor": "No diseases found for \"{{query}}\"",
+    "tryDifferent": "Try different search terms or check the spelling",
+    "resultsFor": "Search Results for \"{{query}}\"",
+    "resultsCount": "{{count}} results",
+    "commonDisease": "Common Disease",
+    "rareIllness": "Rare Illness",
+    "learnMore": "Learn More"
   }
 }

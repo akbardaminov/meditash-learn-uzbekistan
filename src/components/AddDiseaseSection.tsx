@@ -200,48 +200,48 @@ const AddDiseaseSection = ({ type, onDiseaseAdded }: AddDiseaseSectionProps) => 
 
                     <div className="space-y-2">
                       <Label htmlFor="prevalence" className="text-sm font-medium">
-                        {type === "common" ? "Prevalence" : "Rarity"}
+                        {type === "common" ? t('addDisease.prevalence') : t('addDisease.rarity')}
                       </Label>
                       <Input
                         id="prevalence"
                         value={formData.prevalence}
                         onChange={(e) => setFormData({ ...formData, prevalence: e.target.value })}
-                        placeholder={type === "common" ? "e.g., 1 in 100" : "e.g., 1 in 10,000"}
+                        placeholder={type === "common" ? t('addDisease.prevalencePlaceholder') : t('addDisease.rarityPlaceholder')}
                         className="focus:ring-primary focus:border-primary"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="studyTime" className="text-sm font-medium">Estimated Study Time</Label>
+                      <Label htmlFor="studyTime" className="text-sm font-medium">{t('addDisease.studyTime')}</Label>
                       <Input
                         id="studyTime"
                         value={formData.studyTime}
                         onChange={(e) => setFormData({ ...formData, studyTime: e.target.value })}
-                        placeholder="e.g., 2 hours"
+                        placeholder={t('addDisease.studyTimePlaceholder')}
                         className="focus:ring-primary focus:border-primary"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="description" className="text-sm font-medium">Description</Label>
+                    <Label htmlFor="description" className="text-sm font-medium">{t('addDisease.description')}</Label>
                     <Textarea
                       id="description"
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      placeholder="Provide a detailed description of the disease..."
+                      placeholder={t('addDisease.descriptionPlaceholder')}
                       rows={4}
                       className="focus:ring-primary focus:border-primary"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium">Tags</Label>
+                    <Label className="text-sm font-medium">{t('addDisease.tags')}</Label>
                     <div className="flex gap-2 mb-2">
                       <Input
                         value={formData.newTag}
                         onChange={(e) => setFormData({ ...formData, newTag: e.target.value })}
-                        placeholder="Add a tag..."
+                        placeholder={t('addDisease.tagPlaceholder')}
                         className="flex-1 focus:ring-primary focus:border-primary"
                         onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
                       />

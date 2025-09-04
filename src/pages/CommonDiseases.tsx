@@ -157,6 +157,24 @@ const CommonDiseases = () => {
     }
   };
 
+  const translateCategory = (category: string) => {
+    const key = category.toLowerCase().replace(/\s+/g, '');
+    return t(`categories.${key}`, category);
+  };
+
+  const translateDifficulty = (difficulty: string) => {
+    const key = difficulty.toLowerCase();
+    return t(`difficulty.${key}`, difficulty);
+  };
+
+  const translateTag = (tag: string) => {
+    const key = tag
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/[^a-z]/g, '');
+    return t(`tags.${key}`, tag);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -215,10 +233,10 @@ const CommonDiseases = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className="text-xs">
-                      {disease.category}
+                      {translateCategory(disease.category)}
                     </Badge>
                     <Badge className={getDifficultyColor(disease.difficulty)}>
-                      {disease.difficulty}
+                      {translateDifficulty(disease.difficulty)}
                     </Badge>
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
@@ -233,7 +251,7 @@ const CommonDiseases = () => {
                   <div className="flex flex-wrap gap-1 mb-4">
                     {disease.tags.map((tag, tagIndex) => (
                       <Badge key={tagIndex} variant="secondary" className="text-xs">
-                        {tag}
+                        {translateTag(tag)}
                       </Badge>
                     ))}
                   </div>

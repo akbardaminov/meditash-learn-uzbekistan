@@ -113,6 +113,9 @@
     "cardiovascular": "Yurak-qon tomir",
     "neurological": "Nevrologik",
     "gastrointestinal": "Oshqozon-ichak",
+    "genitourinary": "Jinsiy-siydik",
+    "vascular": "Tomir",
+    "genetic": "Genetik",
     "endocrine": "Endokrin",
     "musculoskeletal": "Mushak-skelet",
     "dermatological": "Dermatologik",
@@ -125,6 +128,18 @@
     "beginner": "Boshlang'ich",
     "intermediate": "O'rta",
     "advanced": "Yuqori"
+  },
+  "tags": {
+    "gi": "GI",
+    "acute": "O'tkir",
+    "infectious": "Yuqumli",
+    "primaryCare": "Birlamchi yordam",
+    "chronic": "Surunkali",
+    "allergic": "Allergik",
+    "motor": "Motor",
+    "progressive": "Progressiv",
+    "connectiveTissue": "Biriktiruvchi to'qima",
+    "genetic": "Genetik"
   },
   "footer": {
     "description": "Tibbiyot talabalar uchun AI yordamchi ta'lim platformasi",

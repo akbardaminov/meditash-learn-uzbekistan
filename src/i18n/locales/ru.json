@@ -113,6 +113,9 @@
     "cardiovascular": "Сердечно-сосудистая",
     "neurological": "Неврологическая",
     "gastrointestinal": "Желудочно-кишечная",
+    "genitourinary": "Мочеполовая",
+    "vascular": "Сосудистая",
+    "genetic": "Генетическая",
     "endocrine": "Эндокринная",
     "musculoskeletal": "Костно-мышечная",
     "dermatological": "Дерматологическая",
@@ -125,6 +128,18 @@
     "beginner": "Начинающий",
     "intermediate": "Средний",
     "advanced": "Продвинутый"
+  },
+  "tags": {
+    "gi": "ЖКТ",
+    "acute": "Острый",
+    "infectious": "Инфекционный",
+    "primaryCare": "Первичная помощь",
+    "chronic": "Хронический",
+    "allergic": "Аллергический",
+    "motor": "Моторный",
+    "progressive": "Прогрессирующий",
+    "connectiveTissue": "Соединительная ткань",
+    "genetic": "Генетический"
   },
   "footer": {
     "description": "Платформа обучения с помощником ИИ для студентов-медиков",

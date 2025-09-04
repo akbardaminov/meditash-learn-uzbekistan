@@ -172,6 +172,24 @@ const RareIllnesses = () => {
     }
   };
 
+  const translateCategory = (category: string) => {
+    const key = category.toLowerCase().replace(/\s+/g, '');
+    return t(`categories.${key}`, category);
+  };
+
+  const translateDifficulty = (difficulty: string) => {
+    const key = difficulty.toLowerCase();
+    return t(`difficulty.${key}`, difficulty);
+  };
+
+  const translateTag = (tag: string) => {
+    const key = tag
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/[^a-z]/g, '');
+    return t(`tags.${key}`, tag);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -244,10 +262,10 @@ const RareIllnesses = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline" className="text-xs">
-                      {illness.category}
+                      {translateCategory(illness.category)}
                     </Badge>
                     <Badge className={getDifficultyColor(illness.difficulty)}>
-                      {illness.difficulty}
+                      {translateDifficulty(illness.difficulty)}
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between mb-2">
@@ -270,7 +288,7 @@ const RareIllnesses = () => {
                   <div className="flex flex-wrap gap-1 mb-4">
                     {illness.tags.map((tag, tagIndex) => (
                       <Badge key={tagIndex} variant="secondary" className="text-xs">
-                        {tag}
+                        {translateTag(tag)}
                       </Badge>
                     ))}
                   </div>

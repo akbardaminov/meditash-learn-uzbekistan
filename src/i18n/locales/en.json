@@ -113,6 +113,9 @@
     "cardiovascular": "Cardiovascular",
     "neurological": "Neurological",
     "gastrointestinal": "Gastrointestinal",
+    "genitourinary": "Genitourinary",
+    "vascular": "Vascular",
+    "genetic": "Genetic",
     "endocrine": "Endocrine",
     "musculoskeletal": "Musculoskeletal",
     "dermatological": "Dermatological",
@@ -125,6 +128,18 @@
     "beginner": "Beginner",
     "intermediate": "Intermediate",
     "advanced": "Advanced"
+  },
+  "tags": {
+    "gi": "GI",
+    "acute": "Acute",
+    "infectious": "Infectious",
+    "primaryCare": "Primary Care",
+    "chronic": "Chronic",
+    "allergic": "Allergic",
+    "motor": "Motor",
+    "progressive": "Progressive",
+    "connectiveTissue": "Connective Tissue",
+    "genetic": "Genetic"
   },
   "footer": {
     "description": "Revolutionizing medical education in Uzbekistan. Learn, connect, and grow with MediTash.",
